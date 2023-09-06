@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package token;
+
+option go_package = "github.com/achad747/grpc-token-manager/pkg/token";
+
+service TokenService {
+    rpc Create(TokenRequest) returns (TokenResponse);
+    rpc Drop(TokenRequest) returns (TokenResponse);
+    rpc Write(WriteRequest) returns (TokenResponse);
+    rpc Read(TokenRequest) returns (TokenResponse);
+}
+
+message TokenRequest {
+    string id = 1;
+}
+
+message WriteRequest {
+    string id = 1;
+    string name = 2;
+    uint64 low = 3;
+    uint64 mid = 4;
+    uint64 high = 5;
+}
+
+message TokenResponse {
+    uint64 value = 1;
+    string status = 2;  // "success" or "fail"
+}
