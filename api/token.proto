@@ -24,6 +24,7 @@ message WriteRequest {
 }
 
 message TokenResponse {
-    uint64 value = 1;
-    string status = 2;  // "success" or "fail"
+    uint64 partialValue = 1;
+    uint64 finalValue = 2;
+    string status = 3;  // "success" or "fail"
 }
