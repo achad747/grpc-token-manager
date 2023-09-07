@@ -8,7 +8,7 @@ import (
     "log"
     "net"
     "sync"
-    "github.com/achad747/grpc-token-manager/pkg/token"
+    token "github.com/achad747/grpc-token-manager/pkg/api"
 
 
     "google.golang.org/grpc"

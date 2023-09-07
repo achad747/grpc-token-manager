@@ -4,7 +4,7 @@
 // - protoc             v3.19.4
 // source: api/token.proto
 
-package token
+package api
 
 import (
 	context "context"

@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"google.golang.org/grpc"
-	pb "github.com/achad747/grpc-token-manager/pkg/token"
+	pb "github.com/achad747/grpc-token-manager/pkg/api"
 )
 
 const (
@@ -49,14 +49,14 @@ func main() {
 		if err != nil {
 			log.Fatalf("Could not create token: %v", err)
 		}
-		fmt.Printf("Token created with ID: %s, Message: %s\n", *id, r.GetValue())
+		fmt.Printf("Token created with ID: %s, Message: %s\n", *id, r.GetStatus())
 	case "drop":
 		fmt.Println("Invoking Drop method...")
 		r, err := c.Drop(ctx, &pb.TokenRequest{Id: *id})
 		if err != nil {
 			log.Fatalf("Could not drop token: %v", err)
 		}
-		fmt.Printf("Token dropped with ID: %s, Message: %s\n", *id, r.GetValue())
+		fmt.Printf("Token dropped with ID: %s, Message: %s\n", *id, r.GetStatus())
 	case "write":
 		fmt.Println("Invoking Write method...")
 		r, err := c.Write(ctx, &pb.WriteRequest{
@@ -69,7 +69,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("Could not write token: %v", err)
 		}
-		fmt.Printf("Token written with ID: %s, Name: %s, Low: %d, Mid: %d, High: %d\n", *id, *name, *low, *mid, *high)
+		fmt.Printf("Token written with ID: %s, Partial Value: %d\n", *id, r.GetPartialValue())
 	case "read":
 		fmt.Println("Invoking Read method...")
 		r, err := c.Read(ctx, &pb.TokenRequest{Id: *id})
