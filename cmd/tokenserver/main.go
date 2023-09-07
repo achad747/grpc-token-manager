@@ -30,110 +30,112 @@ type Token struct {
 
 type TokenData struct {
     token *Token
-    mutex sync.Mutex
 }
 
 type Server struct {
     token.UnimplementedTokenServiceServer
-    tokens sync.Map
+	tokens map[string]*Token
+	mu     sync.RWMutex
 }
 
 func (s *Server) Create(ctx context.Context, req *token.TokenRequest) (*token.TokenResponse, error) {
     if req.GetId() == "" {
-        return nil, fmt.Errorf("ID must not be empty")
-    }
+		return nil, fmt.Errorf("ID must not be empty")
+	}
 
-    _, exists := s.tokens.LoadOrStore(req.GetId(), &TokenData{
-        token: &Token{
-            ID: req.GetId(),
-        },
-    })
+	s.mu.Lock()
+	defer s.mu.Unlock()
 
-    if exists {
-        return nil, fmt.Errorf("Token with ID %s already exists", req.GetId())
-    }
+	if _, exists := s.tokens[req.GetId()]; exists {
+		return nil, fmt.Errorf("Token with ID %s already exists", req.GetId())
+	}
+
+	s.tokens[req.GetId()] = &Token{
+		ID: req.GetId(),
+	}
 
     return &token.TokenResponse{Status: "success"}, nil
 }
 
 func (s *Server) Drop(ctx context.Context, req *token.TokenRequest) (*token.TokenResponse, error) {
     if req.GetId() == "" {
-        return nil, fmt.Errorf("ID must not be empty")
-    }
+		return nil, fmt.Errorf("ID must not be empty")
+	}
 
-    _, ok := s.tokens.Load(req.GetId())
-    if !ok {
-        return nil, fmt.Errorf("Token with ID %s not found", req.GetId())
-    }
+	s.mu.Lock()
+	defer s.mu.Unlock()
 
-    s.tokens.Delete(req.GetId())
+	if _, ok := s.tokens[req.GetId()]; !ok {
+		return nil, fmt.Errorf("Token with ID %s not found", req.GetId())
+	}
+
+    delete(s.tokens, req.GetId())
+    
     return &token.TokenResponse{Status: "success"}, nil
 }
 
 func (s *Server) Write(ctx context.Context, req *token.WriteRequest) (*token.TokenResponse, error) {
-    if req.GetId() == "" || req.GetName() == "" {
-        return nil, fmt.Errorf("ID and Name must not be empty")
-    }
+	if req.GetId() == "" || req.GetName() == "" {
+		return nil, fmt.Errorf("ID and Name must not be empty")
+	}
 
-    if req.GetLow() >= req.GetMid() || req.GetMid() >= req.GetHigh() {
-        return nil, fmt.Errorf("Domain bounds are invalid. It should satisfy: Low <= Mid < High")
-    }
+	if req.GetLow() >= req.GetMid() || req.GetMid() >= req.GetHigh() {
+		return nil, fmt.Errorf("Domain bounds are invalid. It should satisfy: Low <= Mid < High")
+	}
 
-    value, ok := s.tokens.Load(req.GetId())
-    if !ok {
-        return nil, fmt.Errorf("Token with ID %s not found", req.GetId())
-    }
+	s.mu.Lock()
+	tokenData, ok := s.tokens[req.GetId()]
+	s.mu.Unlock()
 
-    tokenData := value.(*TokenData)
-    tokenData.mutex.Lock()
-    defer tokenData.mutex.Unlock()
+	if !ok {
+		return nil, fmt.Errorf("Token with ID %s not found", req.GetId())
+	}
 
-    tokenData.token.Name = req.GetName()
-    tokenData.token.Domain.Low = req.GetLow()
-    tokenData.token.Domain.Mid = req.GetMid()
-    tokenData.token.Domain.High = req.GetHigh()
+	tokenData.Name = req.GetName()
+	tokenData.Domain.Low = req.GetLow()
+	tokenData.Domain.Mid = req.GetMid()
+	tokenData.Domain.High = req.GetHigh()
 
-    minValue := uint64(1<<63 - 1)
-    for x := tokenData.token.Domain.Low; x < tokenData.token.Domain.Mid; x++ {
-        currentHash := Hash(tokenData.token.Name, x)
-        if currentHash < minValue {
-            minValue = currentHash
-        }
-    }
-    tokenData.token.State.Partial = minValue
+	minValue := uint64(1<<63 - 1)
+	for x := tokenData.Domain.Low; x < tokenData.Domain.Mid; x++ {
+		currentHash := Hash(tokenData.Name, x)
+		if currentHash < minValue {
+			minValue = currentHash
+		}
+	}
+	tokenData.State.Partial = minValue
 
-    return &token.TokenResponse{PartialValue: tokenData.token.State.Partial, Status: "success"}, nil
+    return &token.TokenResponse{PartialValue: tokenData.State.Partial, Status: "success"}, nil
 }
 
 func (s *Server) Read(ctx context.Context, req *token.TokenRequest) (*token.TokenResponse, error) {
-    if req.GetId() == "" {
-        return nil, fmt.Errorf("ID must not be empty")
-    }
+	if req.GetId() == "" {
+		return nil, fmt.Errorf("ID must not be empty")
+	}
 
-    value, ok := s.tokens.Load(req.GetId())
-    if !ok {
-        return nil, fmt.Errorf("Token with ID %s not found", req.GetId())
-    }
+	s.mu.RLock()
+	tokenData, ok := s.tokens[req.GetId()]
+	s.mu.RUnlock()
 
-    tokenData := value.(*TokenData)
-    tokenData.mutex.Lock()
-    defer tokenData.mutex.Unlock()
+	if !ok {
+		return nil, fmt.Errorf("Token with ID %s not found", req.GetId())
+	}
 
-    minValue := uint64(1<<63 - 1)
-    for x := tokenData.token.Domain.Mid; x < tokenData.token.Domain.High; x++ {
-        currentHash := Hash(tokenData.token.Name, x)
-        if currentHash < minValue {
-            minValue = currentHash
-        }
-    }
+	minValue := uint64(1<<63 - 1)
+	for x := tokenData.Domain.Mid; x < tokenData.Domain.High; x++ {
+		currentHash := Hash(tokenData.Name, x)
+		if currentHash < minValue {
+			minValue = currentHash
+		}
+	}
 
-    if minValue < tokenData.token.State.Partial {
-        tokenData.token.State.Final = minValue
-    } else {
-        tokenData.token.State.Final = tokenData.token.State.Partial
-    }
+	if minValue < tokenData.State.Partial {
+		tokenData.State.Final = minValue
+	} else {
+		tokenData.State.Final = tokenData.State.Partial
+	}
 
-    return &token.TokenResponse{FinalValue: tokenData.token.State.Final, Status: "success"}, nil
+    return &token.TokenResponse{FinalValue: tokenData.State.Final, Status: "success"}, nil
 }
 
 func Hash(name string, nonce uint64) uint64 {
@@ -144,11 +146,17 @@ func Hash(name string, nonce uint64) uint64 {
 
 func main() {
     lis, err := net.Listen("tcp", ":50051")
+    fmt.Printf("Starting server on port :50051")
     if err != nil {
         log.Fatalf("Failed to listen: %v", err)
     }
     s := grpc.NewServer()
-    token.RegisterTokenServiceServer(s, &Server{})
+
+    tokenServer := &Server{
+        tokens: make(map[string]*Token),
+    }
+
+    token.RegisterTokenServiceServer(s, tokenServer)
     if err := s.Serve(lis); err != nil {
         log.Fatalf("Failed to serve: %v", err)
     }
