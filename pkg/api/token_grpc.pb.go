@@ -19,10 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	TokenService_Create_FullMethodName = "/token.TokenService/Create"
-	TokenService_Drop_FullMethodName   = "/token.TokenService/Drop"
-	TokenService_Write_FullMethodName  = "/token.TokenService/Write"
-	TokenService_Read_FullMethodName   = "/token.TokenService/Read"
+	TokenService_Create_FullMethodName          = "/token.TokenService/Create"
+	TokenService_Drop_FullMethodName            = "/token.TokenService/Drop"
+	TokenService_Write_FullMethodName           = "/token.TokenService/Write"
+	TokenService_Read_FullMethodName            = "/token.TokenService/Read"
+	TokenService_WriteToReplica_FullMethodName  = "/token.TokenService/WriteToReplica"
+	TokenService_ReadFromReplica_FullMethodName = "/token.TokenService/ReadFromReplica"
 )
 
 // TokenServiceClient is the client API for TokenService service.
@@ -33,6 +35,8 @@ type TokenServiceClient interface {
 	Drop(ctx context.Context, in *TokenRequest, opts ...grpc.CallOption) (*TokenResponse, error)
 	Write(ctx context.Context, in *WriteRequest, opts ...grpc.CallOption) (*TokenResponse, error)
 	Read(ctx context.Context, in *TokenRequest, opts ...grpc.CallOption) (*TokenResponse, error)
+	WriteToReplica(ctx context.Context, in *WriteReplicaRequest, opts ...grpc.CallOption) (*TokenResponse, error)
+	ReadFromReplica(ctx context.Context, in *TokenRequest, opts ...grpc.CallOption) (*WriteReplicaRequest, error)
 }
 
 type tokenServiceClient struct {
@@ -79,6 +83,24 @@ func (c *tokenServiceClient) Read(ctx context.Context, in *TokenRequest, opts ..
 	return out, nil
 }
 
+func (c *tokenServiceClient) WriteToReplica(ctx context.Context, in *WriteReplicaRequest, opts ...grpc.CallOption) (*TokenResponse, error) {
+	out := new(TokenResponse)
+	err := c.cc.Invoke(ctx, TokenService_WriteToReplica_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tokenServiceClient) ReadFromReplica(ctx context.Context, in *TokenRequest, opts ...grpc.CallOption) (*WriteReplicaRequest, error) {
+	out := new(WriteReplicaRequest)
+	err := c.cc.Invoke(ctx, TokenService_ReadFromReplica_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TokenServiceServer is the server API for TokenService service.
 // All implementations must embed UnimplementedTokenServiceServer
 // for forward compatibility
@@ -87,6 +109,8 @@ type TokenServiceServer interface {
 	Drop(context.Context, *TokenRequest) (*TokenResponse, error)
 	Write(context.Context, *WriteRequest) (*TokenResponse, error)
 	Read(context.Context, *TokenRequest) (*TokenResponse, error)
+	WriteToReplica(context.Context, *WriteReplicaRequest) (*TokenResponse, error)
+	ReadFromReplica(context.Context, *TokenRequest) (*WriteReplicaRequest, error)
 	mustEmbedUnimplementedTokenServiceServer()
 }
 
@@ -105,6 +129,12 @@ func (UnimplementedTokenServiceServer) Write(context.Context, *WriteRequest) (*T
 }
 func (UnimplementedTokenServiceServer) Read(context.Context, *TokenRequest) (*TokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Read not implemented")
+}
+func (UnimplementedTokenServiceServer) WriteToReplica(context.Context, *WriteReplicaRequest) (*TokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WriteToReplica not implemented")
+}
+func (UnimplementedTokenServiceServer) ReadFromReplica(context.Context, *TokenRequest) (*WriteReplicaRequest, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReadFromReplica not implemented")
 }
 func (UnimplementedTokenServiceServer) mustEmbedUnimplementedTokenServiceServer() {}
 
@@ -191,6 +221,42 @@ func _TokenService_Read_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TokenService_WriteToReplica_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(WriteReplicaRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TokenServiceServer).WriteToReplica(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TokenService_WriteToReplica_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TokenServiceServer).WriteToReplica(ctx, req.(*WriteReplicaRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TokenService_ReadFromReplica_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TokenServiceServer).ReadFromReplica(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TokenService_ReadFromReplica_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TokenServiceServer).ReadFromReplica(ctx, req.(*TokenRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // TokenService_ServiceDesc is the grpc.ServiceDesc for TokenService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -213,6 +279,14 @@ var TokenService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Read",
 			Handler:    _TokenService_Read_Handler,
+		},
+		{
+			MethodName: "WriteToReplica",
+			Handler:    _TokenService_WriteToReplica_Handler,
+		},
+		{
+			MethodName: "ReadFromReplica",
+			Handler:    _TokenService_ReadFromReplica_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
