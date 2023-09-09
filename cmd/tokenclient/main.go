@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	address = "localhost:50051"
+	address = "localhost:50n051"
 )
 
 func main() {
@@ -23,11 +23,14 @@ func main() {
 	low := flag.Uint64("low", 0, "Low value for the write request")
 	mid := flag.Uint64("mid", 0, "Mid value for the write request")
 	high := flag.Uint64("high", 0, "High value for the write request")
+	ip := flag.String("ip", "localhost", "IP Address of the server")
+	port := flag.String("port", "50051", "Port of the server")
 
 	flag.Parse()
 
-	fmt.Println("Flags parsed successfully. Establishing connection...")
-
+	fmt.Println("Flags parsed ip: %s, port: %s", *ip, *port)
+	address := fmt.Sprintf("%s:%s", *ip, *port)
+	
 	// Set up a connection to the server.
 	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
@@ -49,14 +52,14 @@ func main() {
 		if err != nil {
 			log.Fatalf("Could not create token: %v", err)
 		}
-		fmt.Printf("Token created with ID: %s, Message: %s\n", *id, r.GetStatus())
+		fmt.Printf("Token created with ID: %s, Response: %v\n", *id, r)
 	case "drop":
 		fmt.Println("Invoking Drop method...")
 		r, err := c.Drop(ctx, &pb.TokenRequest{Id: *id})
 		if err != nil {
 			log.Fatalf("Could not drop token: %v", err)
 		}
-		fmt.Printf("Token dropped with ID: %s, Message: %s\n", *id, r.GetStatus())
+		fmt.Printf("Token dropped with ID: %s, Response: %v\n", *id, r)
 	case "write":
 		fmt.Println("Invoking Write method...")
 		r, err := c.Write(ctx, &pb.WriteRequest{
@@ -69,14 +72,14 @@ func main() {
 		if err != nil {
 			log.Fatalf("Could not write token: %v", err)
 		}
-		fmt.Printf("Token written with ID: %s, Partial Value: %d\n", *id, r.GetPartialValue())
+		fmt.Printf("Token written with ID: %s, Response: %v\n", *id, r)
 	case "read":
 		fmt.Println("Invoking Read method...")
 		r, err := c.Read(ctx, &pb.TokenRequest{Id: *id})
 		if err != nil {
 			log.Fatalf("Could not read token: %v", err)
 		}
-		fmt.Printf("Token read with ID: %s, Final Value: %d\n", *id, r.GetFinalValue())
+		fmt.Printf("Token read with ID: %s, Response: %v\n", *id, r)
 	default:
 		log.Fatalf("Unknown method: %s", *method)
 	}

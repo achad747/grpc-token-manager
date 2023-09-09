@@ -1,1501 +1,1501 @@
 tokens:
-  - id: Token1
-    name: TokenName1
-    domain:
-      low: 37
-      mid: 861
-      high: 1465
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5007
-    readers:
-    - 127.0.0.1:5008
-    - 127.0.0.1:5002
-    - 127.0.0.1:5003
-  - id: Token2
-    name: TokenName2
-    domain:
-      low: 172
-      mid: 907
-      high: 1042
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5009
-    readers:
-    - 127.0.0.1:5006
-    - 127.0.0.1:5010
-    - 127.0.0.1:5007
-  - id: Token3
-    name: TokenName3
-    domain:
-      low: 415
-      mid: 951
-      high: 1453
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5006
-    readers:
-    - 127.0.0.1:5005
-    - 127.0.0.1:5010
-    - 127.0.0.1:5004
-  - id: Token4
-    name: TokenName4
-    domain:
-      low: 80
-      mid: 811
-      high: 1010
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5005
-    readers:
-    - 127.0.0.1:5006
-    - 127.0.0.1:5004
-    - 127.0.0.1:5009
-  - id: Token5
-    name: TokenName5
-    domain:
-      low: 457
-      mid: 609
-      high: 1455
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5007
-    readers:
-    - 127.0.0.1:5004
-    - 127.0.0.1:5003
-    - 127.0.0.1:5008
-  - id: Token6
-    name: TokenName6
-    domain:
-      low: 211
-      mid: 572
-      high: 1047
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5007
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5008
-    - 127.0.0.1:5001
-  - id: Token7
-    name: TokenName7
-    domain:
-      low: 67
-      mid: 878
-      high: 1104
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5001
-    readers:
-    - 127.0.0.1:5008
-    - 127.0.0.1:5005
-    - 127.0.0.1:5003
-  - id: Token8
-    name: TokenName8
-    domain:
-      low: 150
-      mid: 800
-      high: 1264
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5008
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5003
-    - 127.0.0.1:5002
-  - id: Token9
-    name: TokenName9
-    domain:
-      low: 222
-      mid: 918
-      high: 1201
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5002
-    readers:
-    - 127.0.0.1:5001
-    - 127.0.0.1:5007
-    - 127.0.0.1:5003
-  - id: Token10
-    name: TokenName10
-    domain:
-      low: 343
-      mid: 631
-      high: 1449
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5001
-    readers:
-    - 127.0.0.1:5004
-    - 127.0.0.1:5002
-    - 127.0.0.1:5009
-  - id: Token11
-    name: TokenName11
-    domain:
-      low: 98
-      mid: 688
-      high: 1190
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5004
-    readers:
-    - 127.0.0.1:5008
-    - 127.0.0.1:5006
-    - 127.0.0.1:5010
-  - id: Token12
-    name: TokenName12
-    domain:
-      low: 159
-      mid: 646
-      high: 1080
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5001
-    readers:
-    - 127.0.0.1:5003
-    - 127.0.0.1:5005
-    - 127.0.0.1:5007
-  - id: Token13
-    name: TokenName13
-    domain:
-      low: 198
-      mid: 808
-      high: 1150
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5001
-    readers:
-    - 127.0.0.1:5004
-    - 127.0.0.1:5009
-    - 127.0.0.1:5010
-  - id: Token14
-    name: TokenName14
-    domain:
-      low: 66
-      mid: 632
-      high: 1381
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5005
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5009
-    - 127.0.0.1:5001
-  - id: Token15
-    name: TokenName15
-    domain:
-      low: 221
-      mid: 906
-      high: 1243
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5006
-    readers:
-    - 127.0.0.1:5002
-    - 127.0.0.1:5010
-    - 127.0.0.1:5001
-  - id: Token16
-    name: TokenName16
-    domain:
-      low: 469
-      mid: 713
-      high: 1179
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5009
-    readers:
-    - 127.0.0.1:5006
-    - 127.0.0.1:5010
-    - 127.0.0.1:5001
-  - id: Token17
-    name: TokenName17
-    domain:
-      low: 498
-      mid: 663
-      high: 1186
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5009
-    readers:
-    - 127.0.0.1:5003
-    - 127.0.0.1:5006
-    - 127.0.0.1:5007
-  - id: Token18
-    name: TokenName18
-    domain:
-      low: 172
-      mid: 804
-      high: 1176
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5005
-    readers:
-    - 127.0.0.1:5004
-    - 127.0.0.1:5001
-    - 127.0.0.1:5010
-  - id: Token19
-    name: TokenName19
-    domain:
-      low: 253
-      mid: 760
-      high: 1185
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5002
-    readers:
-    - 127.0.0.1:5003
-    - 127.0.0.1:5008
-    - 127.0.0.1:5005
-  - id: Token20
-    name: TokenName20
-    domain:
-      low: 59
-      mid: 816
-      high: 1317
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5010
-    readers:
-    - 127.0.0.1:5008
-    - 127.0.0.1:5006
-    - 127.0.0.1:5005
-  - id: Token21
-    name: TokenName21
-    domain:
-      low: 436
-      mid: 915
-      high: 1200
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5008
-    readers:
-    - 127.0.0.1:5009
-    - 127.0.0.1:5010
-    - 127.0.0.1:5002
-  - id: Token22
-    name: TokenName22
-    domain:
-      low: 133
-      mid: 733
-      high: 1469
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5002
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5005
-    - 127.0.0.1:5001
-  - id: Token23
-    name: TokenName23
-    domain:
-      low: 157
-      mid: 610
-      high: 1279
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5001
-    readers:
-    - 127.0.0.1:5003
-    - 127.0.0.1:5009
-    - 127.0.0.1:5002
-  - id: Token24
-    name: TokenName24
-    domain:
-      low: 460
-      mid: 969
-      high: 1245
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5002
-    readers:
-    - 127.0.0.1:5006
-    - 127.0.0.1:5003
-    - 127.0.0.1:5005
-  - id: Token25
-    name: TokenName25
-    domain:
-      low: 123
-      mid: 945
-      high: 1361
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5003
-    readers:
-    - 127.0.0.1:5001
-    - 127.0.0.1:5008
-    - 127.0.0.1:5002
-  - id: Token26
-    name: TokenName26
-    domain:
-      low: 107
-      mid: 519
-      high: 1199
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5001
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5003
-    - 127.0.0.1:5008
-  - id: Token27
-    name: TokenName27
-    domain:
-      low: 240
-      mid: 826
-      high: 1312
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5009
-    readers:
-    - 127.0.0.1:5006
-    - 127.0.0.1:5004
-    - 127.0.0.1:5003
-  - id: Token28
-    name: TokenName28
-    domain:
-      low: 419
-      mid: 769
-      high: 1425
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5006
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5004
-    - 127.0.0.1:5009
-  - id: Token29
-    name: TokenName29
-    domain:
-      low: 52
-      mid: 509
-      high: 1475
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5008
-    readers:
-    - 127.0.0.1:5001
-    - 127.0.0.1:5006
-    - 127.0.0.1:5004
-  - id: Token30
-    name: TokenName30
-    domain:
-      low: 159
-      mid: 895
-      high: 1167
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5010
-    readers:
-    - 127.0.0.1:5008
-    - 127.0.0.1:5007
-    - 127.0.0.1:5009
-  - id: Token31
-    name: TokenName31
-    domain:
-      low: 203
-      mid: 647
-      high: 1152
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5008
-    readers:
-    - 127.0.0.1:5007
-    - 127.0.0.1:5001
-    - 127.0.0.1:5003
-  - id: Token32
-    name: TokenName32
-    domain:
-      low: 219
-      mid: 935
-      high: 1096
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5003
-    readers:
-    - 127.0.0.1:5007
-    - 127.0.0.1:5009
-    - 127.0.0.1:5006
-  - id: Token33
-    name: TokenName33
-    domain:
-      low: 316
-      mid: 613
-      high: 1264
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5008
-    readers:
-    - 127.0.0.1:5002
-    - 127.0.0.1:5006
-    - 127.0.0.1:5005
-  - id: Token34
-    name: TokenName34
-    domain:
-      low: 223
-      mid: 543
-      high: 1141
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5007
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5009
-    - 127.0.0.1:5004
-  - id: Token35
-    name: TokenName35
-    domain:
-      low: 204
-      mid: 565
-      high: 1171
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5004
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5007
-    - 127.0.0.1:5006
-  - id: Token36
-    name: TokenName36
-    domain:
-      low: 313
-      mid: 858
-      high: 1070
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5003
-    readers:
-    - 127.0.0.1:5007
-    - 127.0.0.1:5008
-    - 127.0.0.1:5001
-  - id: Token37
-    name: TokenName37
-    domain:
-      low: 288
-      mid: 745
-      high: 1389
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5008
-    readers:
-    - 127.0.0.1:5002
-    - 127.0.0.1:5004
-    - 127.0.0.1:5003
-  - id: Token38
-    name: TokenName38
-    domain:
-      low: 77
-      mid: 696
-      high: 1385
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5005
-    readers:
-    - 127.0.0.1:5007
-    - 127.0.0.1:5008
-    - 127.0.0.1:5004
-  - id: Token39
-    name: TokenName39
-    domain:
-      low: 176
-      mid: 914
-      high: 1428
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5007
-    readers:
-    - 127.0.0.1:5008
-    - 127.0.0.1:5005
-    - 127.0.0.1:5001
-  - id: Token40
-    name: TokenName40
-    domain:
-      low: 178
-      mid: 671
-      high: 1438
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5003
-    readers:
-    - 127.0.0.1:5001
-    - 127.0.0.1:5004
-    - 127.0.0.1:5005
-  - id: Token41
-    name: TokenName41
-    domain:
-      low: 60
-      mid: 571
-      high: 1262
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5006
-    readers:
-    - 127.0.0.1:5007
-    - 127.0.0.1:5001
-    - 127.0.0.1:5002
-  - id: Token42
-    name: TokenName42
-    domain:
-      low: 365
-      mid: 884
-      high: 1095
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5007
-    readers:
-    - 127.0.0.1:5005
-    - 127.0.0.1:5003
-    - 127.0.0.1:5004
-  - id: Token43
-    name: TokenName43
-    domain:
-      low: 262
-      mid: 646
-      high: 1370
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5005
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5008
-    - 127.0.0.1:5006
-  - id: Token44
-    name: TokenName44
-    domain:
-      low: 266
-      mid: 718
-      high: 1149
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5007
-    readers:
-    - 127.0.0.1:5001
-    - 127.0.0.1:5010
-    - 127.0.0.1:5009
-  - id: Token45
-    name: TokenName45
-    domain:
-      low: 354
-      mid: 897
-      high: 1354
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5008
-    readers:
-    - 127.0.0.1:5005
-    - 127.0.0.1:5010
-    - 127.0.0.1:5001
-  - id: Token46
-    name: TokenName46
-    domain:
-      low: 242
-      mid: 585
-      high: 1319
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5001
-    readers:
-    - 127.0.0.1:5009
-    - 127.0.0.1:5005
-    - 127.0.0.1:5008
-  - id: Token47
-    name: TokenName47
-    domain:
-      low: 276
-      mid: 918
-      high: 1202
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5009
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5007
-    - 127.0.0.1:5001
-  - id: Token48
-    name: TokenName48
-    domain:
-      low: 284
-      mid: 989
-      high: 1307
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5004
-    readers:
-    - 127.0.0.1:5008
-    - 127.0.0.1:5001
-    - 127.0.0.1:5009
-  - id: Token49
-    name: TokenName49
-    domain:
-      low: 102
-      mid: 653
-      high: 1328
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5003
-    readers:
-    - 127.0.0.1:5001
-    - 127.0.0.1:5005
-    - 127.0.0.1:5002
-  - id: Token50
-    name: TokenName50
-    domain:
-      low: 368
-      mid: 931
-      high: 1399
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5005
-    readers:
-    - 127.0.0.1:5008
-    - 127.0.0.1:5003
-    - 127.0.0.1:5007
-  - id: Token51
-    name: TokenName51
-    domain:
-      low: 85
-      mid: 953
-      high: 1200
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5004
-    readers:
-    - 127.0.0.1:5002
-    - 127.0.0.1:5006
-    - 127.0.0.1:5005
-  - id: Token52
-    name: TokenName52
-    domain:
-      low: 482
-      mid: 689
-      high: 1353
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5006
-    readers:
-    - 127.0.0.1:5009
-    - 127.0.0.1:5002
-    - 127.0.0.1:5004
-  - id: Token53
-    name: TokenName53
-    domain:
-      low: 95
-      mid: 769
-      high: 1498
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5006
-    readers:
-    - 127.0.0.1:5007
-    - 127.0.0.1:5003
-    - 127.0.0.1:5001
-  - id: Token54
-    name: TokenName54
-    domain:
-      low: 121
-      mid: 605
-      high: 1461
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5010
-    readers:
-    - 127.0.0.1:5001
-    - 127.0.0.1:5005
-    - 127.0.0.1:5008
-  - id: Token55
-    name: TokenName55
-    domain:
-      low: 101
-      mid: 835
-      high: 1187
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5002
-    readers:
-    - 127.0.0.1:5008
-    - 127.0.0.1:5010
-    - 127.0.0.1:5005
-  - id: Token56
-    name: TokenName56
-    domain:
-      low: 146
-      mid: 500
-      high: 1026
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5008
-    readers:
-    - 127.0.0.1:5006
-    - 127.0.0.1:5004
-    - 127.0.0.1:5001
-  - id: Token57
-    name: TokenName57
-    domain:
-      low: 476
-      mid: 728
-      high: 1442
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5001
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5008
-    - 127.0.0.1:5005
-  - id: Token58
-    name: TokenName58
-    domain:
-      low: 354
-      mid: 579
-      high: 1009
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5005
-    readers:
-    - 127.0.0.1:5007
-    - 127.0.0.1:5003
-    - 127.0.0.1:5009
-  - id: Token59
-    name: TokenName59
-    domain:
-      low: 462
-      mid: 534
-      high: 1167
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5005
-    readers:
-    - 127.0.0.1:5003
-    - 127.0.0.1:5004
-    - 127.0.0.1:5002
-  - id: Token60
-    name: TokenName60
-    domain:
-      low: 405
-      mid: 972
-      high: 1364
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5001
-    readers:
-    - 127.0.0.1:5009
-    - 127.0.0.1:5002
-    - 127.0.0.1:5004
-  - id: Token61
-    name: TokenName61
-    domain:
-      low: 493
-      mid: 998
-      high: 1355
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5002
-    readers:
-    - 127.0.0.1:5001
-    - 127.0.0.1:5003
-    - 127.0.0.1:5007
-  - id: Token62
-    name: TokenName62
-    domain:
-      low: 242
-      mid: 947
-      high: 1370
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5001
-    readers:
-    - 127.0.0.1:5009
-    - 127.0.0.1:5004
-    - 127.0.0.1:5005
-  - id: Token63
-    name: TokenName63
-    domain:
-      low: 249
-      mid: 823
-      high: 1059
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5006
-    readers:
-    - 127.0.0.1:5007
-    - 127.0.0.1:5002
-    - 127.0.0.1:5008
-  - id: Token64
-    name: TokenName64
-    domain:
-      low: 4
-      mid: 562
-      high: 1320
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5008
-    readers:
-    - 127.0.0.1:5003
-    - 127.0.0.1:5002
-    - 127.0.0.1:5010
-  - id: Token65
-    name: TokenName65
-    domain:
-      low: 251
-      mid: 902
-      high: 1142
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5006
-    readers:
-    - 127.0.0.1:5008
-    - 127.0.0.1:5004
-    - 127.0.0.1:5010
-  - id: Token66
-    name: TokenName66
-    domain:
-      low: 159
-      mid: 788
-      high: 1159
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5009
-    readers:
-    - 127.0.0.1:5001
-    - 127.0.0.1:5010
-    - 127.0.0.1:5004
-  - id: Token67
-    name: TokenName67
-    domain:
-      low: 423
-      mid: 654
-      high: 1341
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5007
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5006
-    - 127.0.0.1:5003
-  - id: Token68
-    name: TokenName68
-    domain:
-      low: 429
-      mid: 855
-      high: 1466
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5009
-    readers:
-    - 127.0.0.1:5002
-    - 127.0.0.1:5003
-    - 127.0.0.1:5006
-  - id: Token69
-    name: TokenName69
-    domain:
-      low: 40
-      mid: 525
-      high: 1128
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5002
-    readers:
-    - 127.0.0.1:5001
-    - 127.0.0.1:5009
-    - 127.0.0.1:5005
-  - id: Token70
-    name: TokenName70
-    domain:
-      low: 299
-      mid: 566
-      high: 1352
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5004
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5001
-    - 127.0.0.1:5002
-  - id: Token71
-    name: TokenName71
-    domain:
-      low: 126
-      mid: 994
-      high: 1289
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5010
-    readers:
-    - 127.0.0.1:5002
-    - 127.0.0.1:5008
-    - 127.0.0.1:5009
-  - id: Token72
-    name: TokenName72
-    domain:
-      low: 182
-      mid: 517
-      high: 1376
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5004
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5006
-    - 127.0.0.1:5003
-  - id: Token73
-    name: TokenName73
-    domain:
-      low: 404
-      mid: 751
-      high: 1152
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5010
-    readers:
-    - 127.0.0.1:5004
-    - 127.0.0.1:5002
-    - 127.0.0.1:5009
-  - id: Token74
-    name: TokenName74
-    domain:
-      low: 417
-      mid: 996
-      high: 1351
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5003
-    readers:
-    - 127.0.0.1:5001
-    - 127.0.0.1:5010
-    - 127.0.0.1:5002
-  - id: Token75
-    name: TokenName75
-    domain:
-      low: 406
-      mid: 561
-      high: 1041
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5003
-    readers:
-    - 127.0.0.1:5004
-    - 127.0.0.1:5008
-    - 127.0.0.1:5009
-  - id: Token76
-    name: TokenName76
-    domain:
-      low: 259
-      mid: 798
-      high: 1088
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5001
-    readers:
-    - 127.0.0.1:5006
-    - 127.0.0.1:5004
-    - 127.0.0.1:5005
-  - id: Token77
-    name: TokenName77
-    domain:
-      low: 319
-      mid: 842
-      high: 1332
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5002
-    readers:
-    - 127.0.0.1:5006
-    - 127.0.0.1:5009
-    - 127.0.0.1:5004
-  - id: Token78
-    name: TokenName78
-    domain:
-      low: 311
-      mid: 870
-      high: 1395
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5007
-    readers:
-    - 127.0.0.1:5002
-    - 127.0.0.1:5006
-    - 127.0.0.1:5008
-  - id: Token79
-    name: TokenName79
-    domain:
-      low: 79
-      mid: 765
-      high: 1312
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5008
-    readers:
-    - 127.0.0.1:5006
-    - 127.0.0.1:5002
-    - 127.0.0.1:5010
-  - id: Token80
-    name: TokenName80
-    domain:
-      low: 231
-      mid: 724
-      high: 1415
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5007
-    readers:
-    - 127.0.0.1:5002
-    - 127.0.0.1:5003
-    - 127.0.0.1:5005
-  - id: Token81
-    name: TokenName81
-    domain:
-      low: 254
-      mid: 629
-      high: 1231
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5002
-    readers:
-    - 127.0.0.1:5008
-    - 127.0.0.1:5010
-    - 127.0.0.1:5007
-  - id: Token82
-    name: TokenName82
-    domain:
-      low: 424
-      mid: 919
-      high: 1239
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5005
-    readers:
-    - 127.0.0.1:5003
-    - 127.0.0.1:5008
-    - 127.0.0.1:5006
-  - id: Token83
-    name: TokenName83
-    domain:
-      low: 172
-      mid: 558
-      high: 1249
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5006
-    readers:
-    - 127.0.0.1:5002
-    - 127.0.0.1:5010
-    - 127.0.0.1:5008
-  - id: Token84
-    name: TokenName84
-    domain:
-      low: 231
-      mid: 580
-      high: 1282
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5004
-    readers:
-    - 127.0.0.1:5008
-    - 127.0.0.1:5006
-    - 127.0.0.1:5001
-  - id: Token85
-    name: TokenName85
-    domain:
-      low: 169
-      mid: 762
-      high: 1180
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5009
-    readers:
-    - 127.0.0.1:5003
-    - 127.0.0.1:5006
-    - 127.0.0.1:5010
-  - id: Token86
-    name: TokenName86
-    domain:
-      low: 258
-      mid: 590
-      high: 1452
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5001
-    readers:
-    - 127.0.0.1:5006
-    - 127.0.0.1:5005
-    - 127.0.0.1:5007
-  - id: Token87
-    name: TokenName87
-    domain:
-      low: 429
-      mid: 896
-      high: 1044
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5007
-    readers:
-    - 127.0.0.1:5005
-    - 127.0.0.1:5001
-    - 127.0.0.1:5006
-  - id: Token88
-    name: TokenName88
-    domain:
-      low: 463
-      mid: 813
-      high: 1297
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5009
-    readers:
-    - 127.0.0.1:5001
-    - 127.0.0.1:5002
-    - 127.0.0.1:5006
-  - id: Token89
-    name: TokenName89
-    domain:
-      low: 200
-      mid: 626
-      high: 1045
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5007
-    readers:
-    - 127.0.0.1:5005
-    - 127.0.0.1:5008
-    - 127.0.0.1:5004
-  - id: Token90
-    name: TokenName90
-    domain:
-      low: 293
-      mid: 987
-      high: 1283
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5006
-    readers:
-    - 127.0.0.1:5005
-    - 127.0.0.1:5004
-    - 127.0.0.1:5009
-  - id: Token91
-    name: TokenName91
-    domain:
-      low: 395
-      mid: 749
-      high: 1205
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5006
-    readers:
-    - 127.0.0.1:5003
-    - 127.0.0.1:5009
-    - 127.0.0.1:5007
-  - id: Token92
-    name: TokenName92
-    domain:
-      low: 304
-      mid: 893
-      high: 1372
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5007
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5009
-    - 127.0.0.1:5001
-  - id: Token93
-    name: TokenName93
-    domain:
-      low: 21
-      mid: 640
-      high: 1016
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5004
-    readers:
-    - 127.0.0.1:5003
-    - 127.0.0.1:5009
-    - 127.0.0.1:5002
-  - id: Token94
-    name: TokenName94
-    domain:
-      low: 86
-      mid: 902
-      high: 1223
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5005
-    readers:
-    - 127.0.0.1:5001
-    - 127.0.0.1:5003
-    - 127.0.0.1:5002
-  - id: Token95
-    name: TokenName95
-    domain:
-      low: 218
-      mid: 609
-      high: 1425
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5009
-    readers:
-    - 127.0.0.1:5002
-    - 127.0.0.1:5007
-    - 127.0.0.1:5004
-  - id: Token96
-    name: TokenName96
-    domain:
-      low: 15
-      mid: 943
-      high: 1361
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5007
-    readers:
-    - 127.0.0.1:5009
-    - 127.0.0.1:5005
-    - 127.0.0.1:5003
-  - id: Token97
-    name: TokenName97
-    domain:
-      low: 477
-      mid: 894
-      high: 1084
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5005
-    readers:
-    - 127.0.0.1:5010
-    - 127.0.0.1:5001
-    - 127.0.0.1:5009
-  - id: Token98
-    name: TokenName98
-    domain:
-      low: 110
-      mid: 882
-      high: 1231
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5003
-    readers:
-    - 127.0.0.1:5004
-    - 127.0.0.1:5007
-    - 127.0.0.1:5002
-  - id: Token99
-    name: TokenName99
-    domain:
-      low: 107
-      mid: 740
-      high: 1392
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5008
-    readers:
-    - 127.0.0.1:5002
-    - 127.0.0.1:5001
-    - 127.0.0.1:5009
-  - id: Token100
-    name: TokenName100
-    domain:
-      low: 378
-      mid: 922
-      high: 1006
-    state:
-      partial: 0
-      final: 0
-    version: 1
-    writer: 127.0.0.1:5010
-    readers:
-    - 127.0.0.1:5004
-    - 127.0.0.1:5003
-    - 127.0.0.1:5001
+- id: Token1
+  name: TokenName1
+  domain:
+    low: 20
+    mid: 838
+    high: 1161
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5001
+  readers:
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+- id: Token2
+  name: TokenName2
+  domain:
+    low: 479
+    mid: 580
+    high: 1070
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5002
+  readers:
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+- id: Token3
+  name: TokenName3
+  domain:
+    low: 261
+    mid: 987
+    high: 1459
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5003
+  readers:
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+- id: Token4
+  name: TokenName4
+  domain:
+    low: 381
+    mid: 526
+    high: 1353
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5004
+  readers:
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+- id: Token5
+  name: TokenName5
+  domain:
+    low: 234
+    mid: 887
+    high: 1431
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5005
+  readers:
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+- id: Token6
+  name: TokenName6
+  domain:
+    low: 94
+    mid: 758
+    high: 1086
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5006
+  readers:
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+- id: Token7
+  name: TokenName7
+  domain:
+    low: 489
+    mid: 782
+    high: 1132
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5007
+  readers:
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+- id: Token8
+  name: TokenName8
+  domain:
+    low: 482
+    mid: 907
+    high: 1364
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5008
+  readers:
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+- id: Token9
+  name: TokenName9
+  domain:
+    low: 398
+    mid: 733
+    high: 1271
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5009
+  readers:
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+- id: Token10
+  name: TokenName10
+  domain:
+    low: 215
+    mid: 751
+    high: 1221
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5010
+  readers:
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+- id: Token11
+  name: TokenName11
+  domain:
+    low: 437
+    mid: 795
+    high: 1457
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5001
+  readers:
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+- id: Token12
+  name: TokenName12
+  domain:
+    low: 413
+    mid: 916
+    high: 1430
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5002
+  readers:
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+- id: Token13
+  name: TokenName13
+  domain:
+    low: 423
+    mid: 903
+    high: 1360
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5003
+  readers:
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+- id: Token14
+  name: TokenName14
+  domain:
+    low: 147
+    mid: 549
+    high: 1365
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5004
+  readers:
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+- id: Token15
+  name: TokenName15
+  domain:
+    low: 268
+    mid: 601
+    high: 1056
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5005
+  readers:
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+- id: Token16
+  name: TokenName16
+  domain:
+    low: 17
+    mid: 570
+    high: 1229
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5006
+  readers:
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+- id: Token17
+  name: TokenName17
+  domain:
+    low: 367
+    mid: 925
+    high: 1045
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5007
+  readers:
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+- id: Token18
+  name: TokenName18
+  domain:
+    low: 84
+    mid: 672
+    high: 1263
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5008
+  readers:
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+- id: Token19
+  name: TokenName19
+  domain:
+    low: 11
+    mid: 944
+    high: 1344
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5009
+  readers:
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+- id: Token20
+  name: TokenName20
+  domain:
+    low: 314
+    mid: 631
+    high: 1078
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5010
+  readers:
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+- id: Token21
+  name: TokenName21
+  domain:
+    low: 72
+    mid: 594
+    high: 1313
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5001
+  readers:
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+- id: Token22
+  name: TokenName22
+  domain:
+    low: 169
+    mid: 891
+    high: 1228
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5002
+  readers:
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+- id: Token23
+  name: TokenName23
+  domain:
+    low: 197
+    mid: 706
+    high: 1362
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5003
+  readers:
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+- id: Token24
+  name: TokenName24
+  domain:
+    low: 121
+    mid: 576
+    high: 1194
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5004
+  readers:
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+- id: Token25
+  name: TokenName25
+  domain:
+    low: 37
+    mid: 578
+    high: 1116
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5005
+  readers:
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+- id: Token26
+  name: TokenName26
+  domain:
+    low: 59
+    mid: 570
+    high: 1094
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5006
+  readers:
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+- id: Token27
+  name: TokenName27
+  domain:
+    low: 163
+    mid: 628
+    high: 1073
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5007
+  readers:
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+- id: Token28
+  name: TokenName28
+  domain:
+    low: 294
+    mid: 806
+    high: 1358
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5008
+  readers:
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+- id: Token29
+  name: TokenName29
+  domain:
+    low: 132
+    mid: 545
+    high: 1186
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5009
+  readers:
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+- id: Token30
+  name: TokenName30
+  domain:
+    low: 257
+    mid: 752
+    high: 1142
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5010
+  readers:
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+- id: Token31
+  name: TokenName31
+  domain:
+    low: 312
+    mid: 633
+    high: 1019
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5001
+  readers:
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+- id: Token32
+  name: TokenName32
+  domain:
+    low: 461
+    mid: 661
+    high: 1393
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5002
+  readers:
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+- id: Token33
+  name: TokenName33
+  domain:
+    low: 328
+    mid: 923
+    high: 1241
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5003
+  readers:
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+- id: Token34
+  name: TokenName34
+  domain:
+    low: 102
+    mid: 748
+    high: 1359
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5004
+  readers:
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+- id: Token35
+  name: TokenName35
+  domain:
+    low: 491
+    mid: 904
+    high: 1158
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5005
+  readers:
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+- id: Token36
+  name: TokenName36
+  domain:
+    low: 8
+    mid: 530
+    high: 1207
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5006
+  readers:
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+- id: Token37
+  name: TokenName37
+  domain:
+    low: 226
+    mid: 836
+    high: 1271
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5007
+  readers:
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+- id: Token38
+  name: TokenName38
+  domain:
+    low: 439
+    mid: 947
+    high: 1312
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5008
+  readers:
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+- id: Token39
+  name: TokenName39
+  domain:
+    low: 480
+    mid: 810
+    high: 1499
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5009
+  readers:
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+- id: Token40
+  name: TokenName40
+  domain:
+    low: 42
+    mid: 506
+    high: 1057
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5010
+  readers:
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+- id: Token41
+  name: TokenName41
+  domain:
+    low: 86
+    mid: 881
+    high: 1028
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5001
+  readers:
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+- id: Token42
+  name: TokenName42
+  domain:
+    low: 315
+    mid: 502
+    high: 1422
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5002
+  readers:
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+- id: Token43
+  name: TokenName43
+  domain:
+    low: 399
+    mid: 665
+    high: 1326
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5003
+  readers:
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+- id: Token44
+  name: TokenName44
+  domain:
+    low: 131
+    mid: 930
+    high: 1463
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5004
+  readers:
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+- id: Token45
+  name: TokenName45
+  domain:
+    low: 498
+    mid: 535
+    high: 1328
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5005
+  readers:
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+- id: Token46
+  name: TokenName46
+  domain:
+    low: 373
+    mid: 898
+    high: 1494
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5006
+  readers:
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+- id: Token47
+  name: TokenName47
+  domain:
+    low: 116
+    mid: 864
+    high: 1494
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5007
+  readers:
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+- id: Token48
+  name: TokenName48
+  domain:
+    low: 74
+    mid: 556
+    high: 1014
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5008
+  readers:
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+- id: Token49
+  name: TokenName49
+  domain:
+    low: 140
+    mid: 861
+    high: 1165
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5009
+  readers:
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+- id: Token50
+  name: TokenName50
+  domain:
+    low: 346
+    mid: 986
+    high: 1238
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5010
+  readers:
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+- id: Token51
+  name: TokenName51
+  domain:
+    low: 153
+    mid: 524
+    high: 1132
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5001
+  readers:
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+- id: Token52
+  name: TokenName52
+  domain:
+    low: 411
+    mid: 843
+    high: 1113
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5002
+  readers:
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+- id: Token53
+  name: TokenName53
+  domain:
+    low: 430
+    mid: 891
+    high: 1297
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5003
+  readers:
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+- id: Token54
+  name: TokenName54
+  domain:
+    low: 156
+    mid: 911
+    high: 1193
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5004
+  readers:
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+- id: Token55
+  name: TokenName55
+  domain:
+    low: 74
+    mid: 658
+    high: 1484
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5005
+  readers:
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+- id: Token56
+  name: TokenName56
+  domain:
+    low: 20
+    mid: 883
+    high: 1410
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5006
+  readers:
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+- id: Token57
+  name: TokenName57
+  domain:
+    low: 316
+    mid: 613
+    high: 1127
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5007
+  readers:
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+- id: Token58
+  name: TokenName58
+  domain:
+    low: 71
+    mid: 993
+    high: 1080
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5008
+  readers:
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+- id: Token59
+  name: TokenName59
+  domain:
+    low: 476
+    mid: 981
+    high: 1113
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5009
+  readers:
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+- id: Token60
+  name: TokenName60
+  domain:
+    low: 281
+    mid: 959
+    high: 1248
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5010
+  readers:
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+- id: Token61
+  name: TokenName61
+  domain:
+    low: 174
+    mid: 514
+    high: 1264
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5001
+  readers:
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+- id: Token62
+  name: TokenName62
+  domain:
+    low: 419
+    mid: 840
+    high: 1239
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5002
+  readers:
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+- id: Token63
+  name: TokenName63
+  domain:
+    low: 240
+    mid: 564
+    high: 1302
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5003
+  readers:
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+- id: Token64
+  name: TokenName64
+  domain:
+    low: 474
+    mid: 712
+    high: 1338
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5004
+  readers:
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+- id: Token65
+  name: TokenName65
+  domain:
+    low: 439
+    mid: 967
+    high: 1143
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5005
+  readers:
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+- id: Token66
+  name: TokenName66
+  domain:
+    low: 419
+    mid: 567
+    high: 1039
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5006
+  readers:
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+- id: Token67
+  name: TokenName67
+  domain:
+    low: 260
+    mid: 648
+    high: 1200
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5007
+  readers:
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+- id: Token68
+  name: TokenName68
+  domain:
+    low: 13
+    mid: 838
+    high: 1202
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5008
+  readers:
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+- id: Token69
+  name: TokenName69
+  domain:
+    low: 375
+    mid: 636
+    high: 1028
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5009
+  readers:
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+- id: Token70
+  name: TokenName70
+  domain:
+    low: 382
+    mid: 733
+    high: 1027
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5010
+  readers:
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+- id: Token71
+  name: TokenName71
+  domain:
+    low: 127
+    mid: 726
+    high: 1495
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5001
+  readers:
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+- id: Token72
+  name: TokenName72
+  domain:
+    low: 206
+    mid: 623
+    high: 1123
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5002
+  readers:
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+- id: Token73
+  name: TokenName73
+  domain:
+    low: 110
+    mid: 906
+    high: 1331
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5003
+  readers:
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+- id: Token74
+  name: TokenName74
+  domain:
+    low: 29
+    mid: 562
+    high: 1092
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5004
+  readers:
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+- id: Token75
+  name: TokenName75
+  domain:
+    low: 232
+    mid: 554
+    high: 1340
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5005
+  readers:
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+- id: Token76
+  name: TokenName76
+  domain:
+    low: 48
+    mid: 861
+    high: 1413
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5006
+  readers:
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+- id: Token77
+  name: TokenName77
+  domain:
+    low: 110
+    mid: 528
+    high: 1216
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5007
+  readers:
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+- id: Token78
+  name: TokenName78
+  domain:
+    low: 345
+    mid: 583
+    high: 1394
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5008
+  readers:
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+- id: Token79
+  name: TokenName79
+  domain:
+    low: 442
+    mid: 962
+    high: 1310
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5009
+  readers:
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+- id: Token80
+  name: TokenName80
+  domain:
+    low: 37
+    mid: 777
+    high: 1422
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5010
+  readers:
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+- id: Token81
+  name: TokenName81
+  domain:
+    low: 396
+    mid: 690
+    high: 1255
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5001
+  readers:
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+- id: Token82
+  name: TokenName82
+  domain:
+    low: 338
+    mid: 841
+    high: 1083
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5002
+  readers:
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+- id: Token83
+  name: TokenName83
+  domain:
+    low: 89
+    mid: 850
+    high: 1123
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5003
+  readers:
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+- id: Token84
+  name: TokenName84
+  domain:
+    low: 366
+    mid: 706
+    high: 1415
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5004
+  readers:
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+- id: Token85
+  name: TokenName85
+  domain:
+    low: 242
+    mid: 600
+    high: 1207
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5005
+  readers:
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+- id: Token86
+  name: TokenName86
+  domain:
+    low: 399
+    mid: 592
+    high: 1294
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5006
+  readers:
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+- id: Token87
+  name: TokenName87
+  domain:
+    low: 280
+    mid: 825
+    high: 1231
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5007
+  readers:
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+- id: Token88
+  name: TokenName88
+  domain:
+    low: 103
+    mid: 549
+    high: 1412
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5008
+  readers:
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+- id: Token89
+  name: TokenName89
+  domain:
+    low: 58
+    mid: 774
+    high: 1227
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5009
+  readers:
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+- id: Token90
+  name: TokenName90
+  domain:
+    low: 472
+    mid: 619
+    high: 1250
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5010
+  readers:
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+- id: Token91
+  name: TokenName91
+  domain:
+    low: 26
+    mid: 503
+    high: 1269
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5001
+  readers:
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+- id: Token92
+  name: TokenName92
+  domain:
+    low: 254
+    mid: 914
+    high: 1167
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5002
+  readers:
+  - 127.0.0.1:5003
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+- id: Token93
+  name: TokenName93
+  domain:
+    low: 44
+    mid: 797
+    high: 1343
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5003
+  readers:
+  - 127.0.0.1:5004
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+- id: Token94
+  name: TokenName94
+  domain:
+    low: 267
+    mid: 520
+    high: 1407
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5004
+  readers:
+  - 127.0.0.1:5005
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+- id: Token95
+  name: TokenName95
+  domain:
+    low: 102
+    mid: 681
+    high: 1003
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5005
+  readers:
+  - 127.0.0.1:5006
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+- id: Token96
+  name: TokenName96
+  domain:
+    low: 188
+    mid: 771
+    high: 1099
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5006
+  readers:
+  - 127.0.0.1:5007
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+- id: Token97
+  name: TokenName97
+  domain:
+    low: 276
+    mid: 768
+    high: 1202
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5007
+  readers:
+  - 127.0.0.1:5008
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+- id: Token98
+  name: TokenName98
+  domain:
+    low: 288
+    mid: 558
+    high: 1463
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5008
+  readers:
+  - 127.0.0.1:5009
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+- id: Token99
+  name: TokenName99
+  domain:
+    low: 68
+    mid: 970
+    high: 1480
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5009
+  readers:
+  - 127.0.0.1:5010
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+- id: Token100
+  name: TokenName100
+  domain:
+    low: 392
+    mid: 732
+    high: 1042
+  state:
+    partial: 0
+    final: 0
+  version: 1
+  writer: 127.0.0.1:5010
+  readers:
+  - 127.0.0.1:5001
+  - 127.0.0.1:5002
+  - 127.0.0.1:5003

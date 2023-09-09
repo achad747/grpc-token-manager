@@ -46,9 +46,13 @@ func main() {
 
 	var tokens TokensList
 	for i := 1; i <= 100; i++ {
-		shuffledNodes := shuffle(nodes)
-		writer := shuffledNodes[0]
-		readers := shuffledNodes[1:4]
+		writerIndex := (i-1) % len(nodes)
+		writer := nodes[writerIndex]
+		readers := []string{
+			nodes[(writerIndex+1)%len(nodes)],
+			nodes[(writerIndex+2)%len(nodes)],
+			nodes[(writerIndex+3)%len(nodes)],
+		}
 
 		domain := Domain{
 			Low: uint64(rand.Intn(500)), 

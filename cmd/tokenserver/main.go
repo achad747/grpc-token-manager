@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/sha256"
 	"encoding/binary"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -15,6 +16,8 @@ import (
 
 	"google.golang.org/grpc"
 )
+
+var grpcAddress string
 
 type Token struct {
 	ID      string   `yaml:"id"`
@@ -65,6 +68,7 @@ func (s *Server) Create(ctx context.Context, req *token.TokenRequest) (*token.To
 		return nil, fmt.Errorf("ID must not be empty")
 	}
 
+    fmt.Println("Create request received Request - %v", req)
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
@@ -76,10 +80,14 @@ func (s *Server) Create(ctx context.Context, req *token.TokenRequest) (*token.To
 		ID: req.GetId(),
 	}
 
+    fmt.Println("Token created with id - %s", req.GetId())
+
     return &token.TokenResponse{Status: "success"}, nil
 }
 
 func (s *Server) Drop(ctx context.Context, req *token.TokenRequest) (*token.TokenResponse, error) {
+    fmt.Println("Drop request received Request - %v", req)
+
     if req.GetId() == "" {
 		return nil, fmt.Errorf("ID must not be empty")
 	}
@@ -93,25 +101,32 @@ func (s *Server) Drop(ctx context.Context, req *token.TokenRequest) (*token.Toke
 
     delete(s.tokens, req.GetId())
     
+    fmt.Println("Token dropped with id - %s", req.GetId())
+
     return &token.TokenResponse{Status: "success"}, nil
 }
 
 func (s *Server) Write(ctx context.Context, req *token.WriteRequest) (*token.TokenResponse, error) {
-	if req.GetId() == "" || req.GetName() == "" {
+	fmt.Println("Write request received Request - %v", req)
+    if req.GetId() == "" || req.GetName() == "" {
+        fmt.Println("ID and Name must not be empty")
 		return nil, fmt.Errorf("ID and Name must not be empty")
 	}
 
 	if req.GetLow() >= req.GetMid() || req.GetMid() >= req.GetHigh() {
+        fmt.Println("Domain bounds are invalid. It should satisfy: Low <= Mid < High")
 		return nil, fmt.Errorf("Domain bounds are invalid. It should satisfy: Low <= Mid < High")
 	}
 
 	s.mu.Lock()
 	tokenData, ok := s.tokens[req.GetId()]
 	s.mu.Unlock()
-
 	if !ok {
+        fmt.Println("Token with ID %s not found", req.GetId())
 		return nil, fmt.Errorf("Token with ID %s not found", req.GetId())
 	}
+
+    fmt.Println("Data fetched for Id - %s Object - %v", req.GetId(), tokenData)
 
     if req.GetName() != "" && req.GetLow() != 0 {
         tokenData.Name = req.GetName()
@@ -120,18 +135,12 @@ func (s *Server) Write(ctx context.Context, req *token.WriteRequest) (*token.Tok
         tokenData.Domain.High = req.GetHigh()
     }
 
-	/*Single thread hash
-    minValue := uint64(1<<63 - 1)
-	for x := tokenData.Domain.Low; x < tokenData.Domain.Mid; x++ {
-		currentHash := Hash(tokenData.Name, x)
-		if currentHash < minValue {
-			minValue = currentHash
-		}
-	}*/
+    fmt.Println("Data for hash function Id - %s Object - %v", req.GetId(), tokenData)
 
     _, partialVal := FindMinHashWithNonce(tokenData, tokenData.Domain.Low, tokenData.Domain.Mid)
     _, finalValue := FindMinHashWithNonce(tokenData, tokenData.Domain.Mid, tokenData.Domain.High)
 
+    fmt.Println("Hash results, Partial Value - %d, Final Value - %d", partialVal, finalValue)
     tokenData.State.Partial = partialVal
 	tokenData.State.Final = Min(finalValue, tokenData.State.Partial)
     tokenData.Version++
@@ -139,6 +148,7 @@ func (s *Server) Write(ctx context.Context, req *token.WriteRequest) (*token.Tok
     s.mu.Lock()
 	s.tokens[req.GetId()] = tokenData
 	s.mu.Unlock()
+    fmt.Println("Data updated locally with Toke - %v", tokenData)
 
     var wg sync.WaitGroup
     errors := make(chan error, len(tokenData.Readers))
@@ -147,15 +157,15 @@ func (s *Server) Write(ctx context.Context, req *token.WriteRequest) (*token.Tok
         wg.Add(1)
         go func(readerAddr string) {
             defer wg.Done()
+            fmt.Println("Replicating Token - %v to %s", tokenData,readerAddr)
             err := s.sendWriteToNode(readerAddr, tokenData)
             if err != nil {
-                fmt.Errorf("failed to replicate to reader: %v", err)
+                fmt.Println("Failed to replicate Token - %v to reader: %v", tokenData,err)
                 errors <- err
             }
         }(reader)
     }
 
-    // Wait for all goroutines to complete.
     wg.Wait()
 
     close(errors)
@@ -177,11 +187,10 @@ func (s *Server) Read(ctx context.Context, req *token.TokenRequest) (*token.Toke
         return nil, fmt.Errorf("Token with ID %s not found", req.GetId())
     }
 
-    // Step 1: Read local value.
+    fmt.Println("Token fetched for Id - %s Token - %v", req.GetId(), tokenData)
     localVersion := tokenData.Version
     localValue := tokenData.State.Final
 
-    // Send read requests to all reader replicas, including itself.
     responses := make(chan *token.WriteReplicaRequest, len(tokenData.Readers))
     errorsCh := make(chan error, len(tokenData.Readers))
 
@@ -190,10 +199,11 @@ func (s *Server) Read(ctx context.Context, req *token.TokenRequest) (*token.Toke
         wg.Add(1)
         go func(readerAddr string, localVersion int64) {
             defer wg.Done()
+            fmt.Println("Sending read request for Id - %s Address - %s",req.GetId(), readerAddr)
             resp, err := s.sendReadToNode(readerAddr, req.GetId())
             if err != nil {
                 errorsCh <- err
-                fmt.Println("Error in read replication:", err)
+                fmt.Println("Error in sendReadToNode for Id - %s Address - %s Error - %v", req.GetId(), readerAddr, err)
                 return
             }
             responses <- resp
@@ -203,7 +213,6 @@ func (s *Server) Read(ctx context.Context, req *token.TokenRequest) (*token.Toke
     close(responses)
     close(errorsCh)
 
-    // Process the responses to get the maximum version and its corresponding value.
     maxVersion := localVersion
     maxValue := localValue
     for resp := range responses {
@@ -213,15 +222,17 @@ func (s *Server) Read(ctx context.Context, req *token.TokenRequest) (*token.Toke
         }
     }
     
-    // Step 3: Impose the maximum value to all readers.
     imposeRequests := make(chan error, len(tokenData.Readers))
+    fmt.Println("Imposing write on Id - %s for Readers - %v", req.GetId(),tokenData.Readers)
     for _, reader := range tokenData.Readers {
         wg.Add(1)
         go func(readerAddr string) {
             defer wg.Done()
+            fmt.Println("Imposing write on Address - %s Id - ", readerAddr, req.GetId())
             err := s.sendImposeToNode(readerAddr, req.GetId(), maxVersion, maxValue)
             if err != nil {
                 imposeRequests <- err
+                fmt.Println("Error while imposing for Id - %s Address - %s", req.GetId(), readerAddr)
                 return
             }
         }(reader)
@@ -229,16 +240,12 @@ func (s *Server) Read(ctx context.Context, req *token.TokenRequest) (*token.Toke
     wg.Wait()
     close(imposeRequests)
 
-    for err := range imposeRequests {
-        log.Println("Error in impose step:", err)
-    }
-
-    // Update the local value and version if necessary.
     s.mu.Lock()
     if maxVersion > tokenData.Version {
         tokenData.Version = maxVersion
         tokenData.State.Final = maxValue
         s.tokens[req.GetId()] = tokenData
+        fmt.Println("Updating local value with Token - %v", tokenData)
     }
     s.mu.Unlock()
 
@@ -253,13 +260,15 @@ func (s *Server) sendReadToNode(nodeAddress string, tokenID string) (*token.Writ
     }
     defer s.connPool.ReturnConn(nodeAddress, conn)
 
+    fmt.Println("Fetched connection from pool")
     client := token.NewTokenServiceClient(conn)
+    fmt.Println("Reading from replica for Id - %s Address - %s", tokenID, nodeAddress)
     response, err := client.ReadFromReplica(context.Background(), &token.TokenRequest{Id: tokenID}) // Use ReplicaRead here
     if err != nil {
+        fmt.Println("Unable to read from replica for Id - %s Address - %s", tokenID, nodeAddress)
         return nil, err
     }
 
-    // Convert the response to our Token struct.
     returnToken := &token.WriteReplicaRequest{
         Id: response.Id,
         Name: response.Name,
@@ -282,7 +291,6 @@ func (s *Server) ReadFromReplica(ctx context.Context, req *token.TokenRequest) (
         return nil, fmt.Errorf("Token with ID %s not found", req.GetId())
     }
 
-    // Simply return the local token's state without further reading from replicas.
     return &token.WriteReplicaRequest{
         Id: tokenData.ID,
         Name: tokenData.Name,
@@ -301,6 +309,8 @@ func (s *Server) sendImposeToNode(nodeAddress string, tokenID string, version in
         Version: version,
         State:   State{Final: value},
     }
+
+    fmt.Println("Imposed Token - %v for Address - %s", tmpToken, nodeAddress)
 
     return s.sendWriteToNode(nodeAddress, tmpToken)
 }
@@ -373,6 +383,7 @@ func (s *Server) sendWriteToNode(nodeAddress string, t *Token) error {
     }
     defer s.connPool.ReturnConn(nodeAddress, conn)
 
+    fmt.Println("Connection fetched from pool for write to %s", nodeAddress)
     client := token.NewTokenServiceClient(conn)
 
     _, err = client.WriteToReplica(context.Background(), &token.WriteReplicaRequest{
@@ -386,14 +397,14 @@ func (s *Server) sendWriteToNode(nodeAddress string, t *Token) error {
         Version: t.Version,
     })
 
+    if err != nil {
+        fmt.Println("Error while replicating Token - %v to Node - %s Error - %v", t, nodeAddress, err)
+    }
+
     return err
 }
 
 func (s *Server) WriteToReplica(ctx context.Context, req *token.WriteReplicaRequest) (*token.TokenResponse, error) {
-    // Similar to the Write function, but without triggering further replication.
-    // Just update the local state based on the replicated data.
-
-    // Retrieve the token data
     s.mu.Lock()
     tokenData, exists := s.tokens[req.GetId()]
     s.mu.Unlock()
@@ -402,7 +413,8 @@ func (s *Server) WriteToReplica(ctx context.Context, req *token.WriteReplicaRequ
         return nil, fmt.Errorf("Token with ID %s not found", req.GetId())
     }
 
-    // Update the token's data based on the replicated data
+    fmt.Println("Token retrieved %v", tokenData)
+    
     tokenData.Name = req.GetName()
     tokenData.Domain.Low = req.GetLow()
     tokenData.Domain.Mid = req.GetMid()
@@ -414,6 +426,8 @@ func (s *Server) WriteToReplica(ctx context.Context, req *token.WriteReplicaRequ
     s.mu.Lock()
     s.tokens[req.GetId()] = tokenData
     s.mu.Unlock()
+
+    fmt.Println("Token updated %v", tokenData)
 
     return &token.TokenResponse{Status: "success"}, nil
 }
@@ -439,8 +453,6 @@ func (cp *ConnectionPool) GetConn(address string) (*grpc.ClientConn, error) {
 		return <-cp.connections[address], nil
 	}
 
-	// If we reach here, there were no available connections in the pool for the given address.
-	// Check if we can create a new connection.
 	if cp.connectionCounts[address] < cp.maxConnectionsPerAddr {
 		conn, err := grpc.Dial(address, grpc.WithInsecure())
 		if err != nil {
@@ -450,7 +462,6 @@ func (cp *ConnectionPool) GetConn(address string) (*grpc.ClientConn, error) {
 		return conn, nil
 	}
 
-	// If maximum connections are reached and none are available, wait.
 	cp.cond.L.Lock()
 	for len(cp.connections[address]) == 0 && cp.connectionCounts[address] >= cp.maxConnectionsPerAddr {
 		cp.cond.Wait()
@@ -468,11 +479,9 @@ func (cp *ConnectionPool) ReturnConn(address string, conn *grpc.ClientConn) {
 		cp.connections[address] = make(chan *grpc.ClientConn, cp.maxConnectionsPerAddr)
 	}
 
-	select {
+    select {
 	case cp.connections[address] <- conn:
 		cp.cond.Broadcast()
-	default:
-		// Optional: handle the case where the connection channel is full. This shouldn't happen in the current design.
 	}
 }
 
@@ -489,8 +498,11 @@ func (cp *ConnectionPool) Close() {
 }
 
 func main() {
-    lis, err := net.Listen("tcp", ":50051")
-    fmt.Printf("Starting server on port :50051")
+    port := flag.String("port", "50051", "Port to run the server on")
+    flag.Parse()
+
+    lis, err := net.Listen("tcp", ":" + *port)
+    fmt.Printf("Starting server on port :"+*port)
     if err != nil {
         log.Fatalf("Failed to listen: %v", err)
     }
@@ -498,10 +510,12 @@ func main() {
 
     tokenServer := &Server{
         tokens: make(map[string]*Token),
+        connPool: NewConnectionPool(3),
     }
 
     filename := "/Users/akshithreddyc/Desktop/Workplace/grpc-token-manager/utils/static/tokens.yaml"
-	readErr := tokenServer.ReadTokensFromYaml(filename)
+	grpcAddress = "127.0.0.1:" + *port
+    readErr := tokenServer.ReadTokensFromYaml(filename, "127.0.0.1:" + *port)
 	if readErr != nil {
 		log.Fatalf("Failed to read tokens from YAML file: %v", err)
         return
@@ -513,7 +527,7 @@ func main() {
     }
 }
 
-func (s *Server) ReadTokensFromYaml(filename string) error {
+func (s *Server) ReadTokensFromYaml(filename string, address string) error {
     fmt.Println("Starting to read tokens from:", filename)
     
 	data, err := ioutil.ReadFile(filename)
@@ -529,15 +543,24 @@ func (s *Server) ReadTokensFromYaml(filename string) error {
 		return err
 	}
 
-    fmt.Printf("Read %d tokens from the file", len(tokensList.Tokens))
-
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	for _, token := range tokensList.Tokens {
+        if token.Writer == address ||  contains(token.Readers, address) {
+
+        }
 		s.tokens[token.ID] = &token
-		fmt.Printf("Added token with ID: %s to the server's tokens map", token.ID)
 	}
     
 	fmt.Println("Finished reading tokens")
 	return nil
+}
+
+func contains(slice []string, val string) bool {
+	for _, item := range slice {
+		if item == val {
+			return true
+		}
+	}
+	return false
 }

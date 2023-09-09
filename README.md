@@ -1,4 +1,4 @@
-# Distributed Token System
+# Distributed Token Manager System
 
 A distributed system implementation using the Read-Impose-Write-All (RIW) protocol to ensure consistency across replicas.
 
