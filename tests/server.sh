@@ -25,7 +25,7 @@ start_server() {
   echo $server_pid >> server_pids.txt
 
   # Give the server some time to start
-  sleep 5
+  sleep 1
 
   # Check if the server process is still running
   if ! kill -0 $server_pid 2>/dev/null; then

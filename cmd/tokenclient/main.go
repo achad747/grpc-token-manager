@@ -16,6 +16,7 @@ const (
 )
 
 func main() {
+	startTime := time.Now()
 	// Define command-line flags
 	method := flag.String("method", "create", "Method to call (create, drop, write, read)")
 	id := flag.String("id", "sampleID", "ID for the token request")
@@ -39,9 +40,10 @@ func main() {
 	defer conn.Close()
 	c := pb.NewTokenServiceClient(conn)
 
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+
 	fmt.Printf("Connection established to server at %s\n", address)
 
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
 	// Use the method flag to determine which gRPC method to call
@@ -83,4 +85,6 @@ func main() {
 	default:
 		log.Fatalf("Unknown method: %s", *method)
 	}
+
+	fmt.Printf("Time taken: %v\n", time.Since(startTime))
 }
