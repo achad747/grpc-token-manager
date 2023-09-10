@@ -23,18 +23,18 @@ This system maintains a collection of tokens, with each token being replicated a
 ### Installation and Setup
 
 1. Run the following commands
-\```bash
+```bash
 cd grpc-token-manager
 go get -v ./...
 protoc --go_out=pkg --go_opt=paths=source_relative --go-grpc_out=pkg --go-grpc_opt=paths=source_relative api/token.proto
-\```
+```
 
 ### Running
 
 1. Start the server:
-\```bash
+```bash
 go run main.go
-\```
+```
 
 ## Usage
 

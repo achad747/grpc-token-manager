@@ -65,8 +65,8 @@ func main() {
 
 	var tokens []util.Token
 
-	for i := 1; i <= 1000; i++ {
-		writerIndex := (i - 1) % len(nodes)
+	for i := 0; i < 1000; i++ {
+		writerIndex := (i) % len(nodes)
 		writer := nodes[writerIndex]
 		readers := []string{
 			nodes[(writerIndex+1)%len(nodes)],
@@ -74,7 +74,7 @@ func main() {
 			nodes[(writerIndex+3)%len(nodes)],
 		}
 
-		tokens = append(tokens, util.Token{ID: fmt.Sprintf("Token%d", i%99), Name: "RandomName", Version: 1, Writer: writer, Readers: readers})
+		tokens = append(tokens, util.Token{ID: fmt.Sprintf("Token%d", (i - 1)%100), Name: "RandomName", Version: 1, Writer: writer, Readers: readers})
 
 	}
 
