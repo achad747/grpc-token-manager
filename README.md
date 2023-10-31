@@ -9,24 +9,30 @@ This system maintains a collection of tokens, with each token being replicated a
 ## Features
 
 - **Distributed Reads and Writes**: The system supports reading and writing tokens in a distributed environment.
-- **Read-Modify-Write All Protocol**: Ensures consistency across replicas using the RIW protocol.
+- **Read-Impose-Write All Protocol**: Ensures consistency across replicas using the RIW protocol.
 - **Connection Pooling**: Efficiently manages gRPC connections to other nodes using a connection pool.
 - **Concurrent Access**: Uses Go routines for concurrent access to replicas and a mutex to protect shared data.
+- **Log Aggregation**: Uses Kafka for log streaming and alerts
 
 ## Getting Started
 
 ### Prerequisites
 
-- Go (at least version 1.15)
+- Go (at least version 1.21)
 - gRPC and Protocol Buffers
 
 ### Installation and Setup
 
 1. Run the following commands
 ```bash
-cd grpc-token-manager
-go get -v ./...
-protoc --go_out=pkg --go_opt=paths=source_relative --go-grpc_out=pkg --go-grpc_opt=paths=source_relative api/token.proto
+$cd grpc-token-manager
+$go get -v ./...
+$protoc --go_out=pkg --go_opt=paths=source_relative --go-grpc_out=pkg --go-grpc_opt=paths=source_relative api/token.proto
+```
+2. Install Apache Kafka and Zookeeper
+```bash
+$brew install zookeeper
+$brew install kafka
 ```
 
 ### Running

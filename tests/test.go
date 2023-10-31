@@ -65,7 +65,7 @@ func main() {
 
 	var tokens []util.Token
 
-	for i := 0; i < 1000; i++ {
+	for i := 0; i < 100; i++ {
 		writerIndex := (i) % len(nodes)
 		writer := nodes[writerIndex]
 		readers := []string{

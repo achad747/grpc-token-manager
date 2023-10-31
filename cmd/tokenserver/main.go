@@ -8,7 +8,8 @@ import (
 	"sync"
 
 	api "github.com/achad747/grpc-token-manager/pkg/api"
-	token "github.com/achad747/grpc-token-manager/pkg/util"
+	util "github.com/achad747/grpc-token-manager/pkg/util"
+	stream "github.com/achad747/grpc-token-manager/stream"
 
 	"google.golang.org/grpc"
 )
@@ -17,9 +18,10 @@ var grpcAddress string
 
 type Server struct {
 	api.UnimplementedTokenServiceServer
-	tokens   map[string]*token.Token
+	tokens   map[string]*util.Token
 	mu       sync.RWMutex
-	connPool *token.ConnectionPool
+	connPool *util.ConnectionPool
+	queue *stream.ConcurrentQueue
 }
 
 func (s *Server) Create(ctx context.Context, req *api.TokenRequest) (*api.TokenResponse, error) {
@@ -35,7 +37,7 @@ func (s *Server) Create(ctx context.Context, req *api.TokenRequest) (*api.TokenR
 		return nil, fmt.Errorf("Token with ID %s already exists\n", req.GetId())
 	}
 
-	s.tokens[req.GetId()] = &token.Token{
+	s.tokens[req.GetId()] = &util.Token{
 		ID: req.GetId(),
 	}
 
@@ -97,12 +99,12 @@ func (s *Server) Write(ctx context.Context, req *api.WriteRequest) (*api.TokenRe
 
 	fmt.Printf("Data for hash function Id - %s Object - %v\n", req.GetId(), tokenData)
 
-	_, partialVal := token.FindMinHashWithNonce(tokenData, tokenData.Domain.Low, tokenData.Domain.Mid, 5)
-	_, finalValue := token.FindMinHashWithNonce(tokenData, tokenData.Domain.Mid, tokenData.Domain.High, 5)
+	_, partialVal := util.FindMinHashWithNonce(tokenData, tokenData.Domain.Low, tokenData.Domain.Mid, 5)
+	_, finalValue := util.FindMinHashWithNonce(tokenData, tokenData.Domain.Mid, tokenData.Domain.High, 5)
 
 	fmt.Printf("Hash results, Partial Value - %d, Final Value - %d\n", partialVal, finalValue)
 	tokenData.State.Partial = partialVal
-	tokenData.State.Final = token.Min(finalValue, tokenData.State.Partial)
+	tokenData.State.Final = util.Min(finalValue, tokenData.State.Partial)
 	tokenData.Version++
 
 	s.mu.Lock()
@@ -264,10 +266,10 @@ func (s *Server) ReadFromReplica(ctx context.Context, req *api.TokenRequest) (*a
 }
 
 func (s *Server) sendImposeToNode(nodeAddress string, tokenID string, version int64, value uint64) error {
-	tmpToken := &token.Token{
+	tmpToken := &util.Token{
 		ID:      tokenID,
 		Version: version,
-		State:   token.State{Final: value},
+		State:   util.State{Final: value},
 	}
 
 	fmt.Printf("Imposed Token - %v for Address - %s\n", tmpToken, nodeAddress)
@@ -275,7 +277,7 @@ func (s *Server) sendImposeToNode(nodeAddress string, tokenID string, version in
 	return s.sendWriteToNode(nodeAddress, tmpToken)
 }
 
-func (s *Server) sendWriteToNode(nodeAddress string, t *token.Token) error {
+func (s *Server) sendWriteToNode(nodeAddress string, t *util.Token) error {
 	conn, err := s.connPool.GetConn(nodeAddress)
 	if err != nil {
 		return err
@@ -331,9 +333,18 @@ func (s *Server) WriteToReplica(ctx context.Context, req *api.WriteReplicaReques
 	return &api.TokenResponse{Status: "success"}, nil
 }
 
+
 func main() {
 	port := flag.String("port", "50051", "Port to run the server on")
 	flag.Parse()
+
+	tokenServer := &Server{
+		tokens:   make(map[string]*util.Token),
+		connPool: util.NewConnectionPool(5),
+		queue: stream.Start("localhost:9092", []string{"apple", "banana", "cherry"}),
+	}
+
+	//tokenServer.queue.StartDequeue()
 
 	lis, err := net.Listen("tcp", ":"+*port)
 	fmt.Printf("Starting server on port : %s\n", *port)
@@ -342,18 +353,13 @@ func main() {
 	}
 	s := grpc.NewServer()
 
-	tokenServer := &Server{
-		tokens:   make(map[string]*token.Token),
-		connPool: token.NewConnectionPool(5),
-	}
-
 	filename := "/Users/akshithreddyc/Desktop/Workplace/grpc-token-manager/static/tokens.yaml"
 	grpcAddress = "127.0.0.1:" + *port
-	tokenList, readErr := token.ReadTokensFromYaml(filename, "127.0.0.1:"+*port)
+	tokenList, readErr := util.ReadTokensFromYaml(filename, "127.0.0.1:"+*port)
 
 	tokenServer.mu.Lock()
 	for _, temp := range tokenList.Tokens {
-		if temp.Writer == grpcAddress || token.Contains(temp.Readers, grpcAddress) {
+		if temp.Writer == grpcAddress || util.Contains(temp.Readers, grpcAddress) {
 			tokenServer.tokens[temp.ID] = &temp
 		}
 	}
